@@ -1,0 +1,15 @@
+{
+  "name": "mongo01",
+  "version": "1.0.0",
+  "description": "attempting to make a app to coonect with mongo",
+  "main": "index.js",
+  "dependencies": {
+    "mongodb": "^2.1.18"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
