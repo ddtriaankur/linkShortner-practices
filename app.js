@@ -100,8 +100,8 @@ if(option === 'help') {
 	console.log(' reading = node app myproject link read');
 	console.log(' inserting = node app myproject link insert') 
 	console.log(' deleting = node app myproject link delete 2gGw7z')
-	console.log(' deleting = node app myproject link update oldName NewName')
-
+	console.log(' update = node app myproject link update oldName NewName')
+// db.link.update({name : null}, { $set : {name : "kursa" } })
 }
 
 
