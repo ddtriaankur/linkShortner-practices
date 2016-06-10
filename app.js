@@ -3,7 +3,10 @@ NOTES
 // process.argv[2] = Name of the Database
 // process.argv[3] = Name of the Collection
 // process.argv[4] = Operation CRUD name
-// process.argv[5] = _id of the document to be removed in delete mode, name of the doc to be 'updated' mode
+// process.argv[5] = _id of the document to be removed in delete mode, 
+										name of the doc to be 										//'updated' mode
+										name of the document to be searched      //'find' more
+
 // process.argv[6] = new document name
 
 */
@@ -12,7 +15,7 @@ var mongo = require('mongodb').MongoClient
 var option = process.argv[4] ;						//read, insert
 
 /*
-	READ DOCUMENTS
+	READ ALL DOCUMENTS
 	node app myproject link read
 */
 var mongo = require('mongodb').MongoClient ;
@@ -26,6 +29,28 @@ if(option === 'read') {
 	        var collection = db.collection(process.argv[3]) ;
 
 	        collection.find({}, { "_id": "0", "name": "1" } )
+	        .toArray(function(err, docs) {
+	            if(err) throw err;
+
+	            console.dir(docs);
+	            db.close();
+	        });
+	});
+}
+
+/*
+	Find DOCUMENTS
+	node app myproject link find <name>
+*/
+if(option === 'find') {
+	mongo.connect('mongodb://localhost:27017/'+ process.argv[2], function(err, db){
+	        if(err) throw err ;
+					// console.log('Connected correctly to server') ;
+
+	        // var collection = db.collection('link') ;
+	        var collection = db.collection(process.argv[3]) ;
+
+	        collection.find({"name": process.argv[5]}, { "_id": "0", "name": "1" } )
 	        .toArray(function(err, docs) {
 	            if(err) throw err;
 
